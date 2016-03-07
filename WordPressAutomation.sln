@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordPressAutomation", "WordPressAutomation\WordPressAutomation.csproj", "{89193B0D-8B19-4834-840C-A46686F30034}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordPressTests", "WordPressTests\WordPressTests.csproj", "{A2FDD6F2-CCA2-48A8-BB6E-CF9D3432F7A1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{89193B0D-8B19-4834-840C-A46686F30034}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89193B0D-8B19-4834-840C-A46686F30034}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89193B0D-8B19-4834-840C-A46686F30034}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89193B0D-8B19-4834-840C-A46686F30034}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2FDD6F2-CCA2-48A8-BB6E-CF9D3432F7A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2FDD6F2-CCA2-48A8-BB6E-CF9D3432F7A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2FDD6F2-CCA2-48A8-BB6E-CF9D3432F7A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2FDD6F2-CCA2-48A8-BB6E-CF9D3432F7A1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
