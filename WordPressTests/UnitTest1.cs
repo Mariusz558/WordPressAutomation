@@ -12,6 +12,8 @@ namespace WordPressTests
         {
             var c = new Class1();
             c.Go();
+
+            test
         }
     }
 }
