@@ -11,8 +11,7 @@ namespace WordPressAutomation
     {
         public static void GoTo()
         {
-            var driver = new FirefoxDriver();
-            driver.Navigate().GoToUrl("http://localhost:15662/wp-login.php");
+            Driver.Instance.Navigate().GoToUrl("http://localhost:15662/wp-login.php");         
         }
 
         public static LoginCommand LoginAs(string userName)
@@ -23,9 +22,21 @@ namespace WordPressAutomation
         public class LoginCommand
         {
             private readonly string userName;
+            private readonly string password;
             public LoginCommand(string userName)
             {
                 this.userName = userName;
+            }
+
+            public LoginCommand WithPassword(string password)
+            {
+                this.password = password;
+                return this;
+            }
+
+            public LoginCommand Login()
+            {
+                throw new NotImplementedException();
             }
         }
     }
