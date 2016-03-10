@@ -34,9 +34,9 @@ namespace WordPressAutomation
                 return this;
             }
 
-            public LoginCommand Login()
+            public LoginCommand Login()//tu bedzie sie odbywalo wypelnianie pol logowania i klikanie w guziki
             {
-                throw new NotImplementedException();
+                Driver.Instance.
             }
         }
     }
