@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium;
 
 namespace WordPressAutomation
 {
@@ -19,11 +20,12 @@ namespace WordPressAutomation
             return new LoginCommand(userName);//tworzymy komende logowania; metoda LoginAs wywolywana na klasie LoginPage bedzie zwracac obiekt klasy LoginCommand z parametrem, ktorym jest zadany userName
         }
 
-        public class LoginCommand//klasa komendy logowania, ktora zawiera nastepne z ciagu metod wywolywanych w tescie na klasie LoginPage
+        public class LoginCommand //klasa komendy logowania, ktora zawiera nastepne z ciagu metod wywolywanych w tescie na klasie LoginPage
         {
             private readonly string userName;
-            private readonly string password;
-            public LoginCommand(string userName)//konstruktor
+            private string password;
+            
+            public LoginCommand(string userName) //konstruktor
             {
                 this.userName = userName;
             }
@@ -34,9 +36,17 @@ namespace WordPressAutomation
                 return this;
             }
 
-            public LoginCommand Login()//tu bedzie sie odbywalo wypelnianie pol logowania i klikanie w guziki
+            public void Login() //tu bedzie sie odbywalo wypelnianie pol logowania i klikanie w guziki
             {
-                Driver.Instance.
+                var loginInput = Driver.Instance.FindElement(By.Id("user_login"));
+                loginInput.SendKeys(userName);
+
+                var passwordInput = Driver.Instance.FindElement(By.Id("user_pass"));
+                passwordInput.SendKeys(password);
+
+                var loginButton = Driver.Instance.FindElement(By.Id("wp-submit"));
+                loginButton.Click();
+                
             }
         }
     }
