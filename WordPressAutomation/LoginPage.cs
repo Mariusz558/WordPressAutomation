@@ -14,16 +14,16 @@ namespace WordPressAutomation
             Driver.Instance.Navigate().GoToUrl("http://localhost:15662/wp-login.php");         
         }
 
-        public static LoginCommand LoginAs(string userName)
+        public static LoginCommand LoginAs(string userName)//pierwsza metoda z ciagu metod wywolywanych na klasie LoginPage w tescie; fluent interface za pomoca fabryki; http://stackoverflow.com/questions/515269/factory-pattern-in-c-how-to-ensure-an-object-instance-can-only-be-created-by-a
         {
-            return new LoginCommand(userName);
+            return new LoginCommand(userName);//tworzymy komende logowania; metoda LoginAs wywolywana na klasie LoginPage bedzie zwracac obiekt klasy LoginCommand z parametrem, ktorym jest zadany userName
         }
 
-        public class LoginCommand
+        public class LoginCommand//klasa komendy logowania, ktora zawiera nastepne z ciagu metod wywolywanych w tescie na klasie LoginPage
         {
             private readonly string userName;
             private readonly string password;
-            public LoginCommand(string userName)
+            public LoginCommand(string userName)//konstruktor
             {
                 this.userName = userName;
             }
