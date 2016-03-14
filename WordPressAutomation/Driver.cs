@@ -16,5 +16,10 @@ namespace WordPressAutomation
             Instance = new FirefoxDriver();//tworzy nowa instancje drivera
             Instance.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));//opoznienie w czekaniu na otwarcie przegladarki   
         }
+
+        public static void Close()
+        {
+            Instance.Close();//zamyka przegladarke po zakonczonym tescie
+        }
     }
 }
