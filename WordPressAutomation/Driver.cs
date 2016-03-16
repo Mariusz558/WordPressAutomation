@@ -19,7 +19,7 @@ namespace WordPressAutomation
 
         public static void Close()
         {
-            Instance.Close();//zamyka przegladarke po zakonczonym tescie
+            //Instance.Close();//zamyka przegladarke po zakonczonym tescie
         }
     }
 }

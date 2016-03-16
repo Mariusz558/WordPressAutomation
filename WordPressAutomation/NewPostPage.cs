@@ -1,10 +1,11 @@
-﻿using System;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Firefox;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using OpenQA.Selenium;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace WordPressAutomation
 {
@@ -27,7 +28,9 @@ namespace WordPressAutomation
 
         public static void GoToNewPost()
         {
-            throw new NotImplementedException();
+            var message = Driver.Instance.FindElement(By.Id("message"));
+            var newPostLink = message.FindElements(By.TagName("a"))[0];
+            newPostLink.Click();
         }
     }
 
@@ -47,7 +50,7 @@ namespace WordPressAutomation
             return this;
         }
 
-        public void Publish()
+        public void Publish()//metoda bez zmiennych; tak tez mozna pisac automaty; zaleta mniej linijek kodu (wole ze zmiennymi narazie)
         {
             Driver.Instance.FindElement(By.Id("title")).SendKeys(title);
 
@@ -55,9 +58,9 @@ namespace WordPressAutomation
             Driver.Instance.SwitchTo().ActiveElement().SendKeys(body);
             Driver.Instance.SwitchTo().DefaultContent();
 
-            Thread.Sleep(1000);
+            Thread.Sleep(5000);//czeka 1 sec. przed kliknieciem w publish
 
-            Driver.Instance.FindElement(By.Id("publish")).Click();
+            Driver.Instance.FindElement(By.Name("publish")).Click();
         }
     }
 }

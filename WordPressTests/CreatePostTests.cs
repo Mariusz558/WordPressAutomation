@@ -9,7 +9,7 @@ using WordPressAutomation;
 namespace WordPressTests
 {
     [TestClass]
-    class CreatePostTests
+    public class CreatePostTests
     {
         [TestInitialize]//metoda wywolywana przed testami
         public void Init()
@@ -29,7 +29,7 @@ namespace WordPressTests
                 .Publish();
             NewPostPage.GoToNewPost();//wyswietlamy nowy post
 
-            Assert.AreEqual(PostPage.Title, "This is the new post title", "Title did not match the new post");//sprawdzymy czy faktycznie wyswietlony zostal dodany w tescie post
+            Assert.AreEqual(PostPage.Title, "This is the test post title", "Title did not match the new post");//sprawdzymy czy faktycznie wyswietlony zostal dodany w tescie post
 
         }
         [TestCleanup]
@@ -39,4 +39,3 @@ namespace WordPressTests
         }
     }
     }
-}
