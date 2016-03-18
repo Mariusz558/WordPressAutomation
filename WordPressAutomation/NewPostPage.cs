@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using WordPressAutomation;
 
 namespace WordPressAutomation
 {
@@ -31,6 +32,23 @@ namespace WordPressAutomation
             var message = Driver.Instance.FindElement(By.Id("message"));
             var newPostLink = message.FindElements(By.TagName("a"))[0];
             newPostLink.Click();
+        }
+
+        public static bool IsInEditMode()
+        {
+            //return Driver.Instance.FindElement(By.Id("edit-slug-buttons")) != null;
+            return Driver.Instance.FindElement(By.XPath(".//*[@id='publish']")) != null;
+        }
+
+        public static string Title 
+        {
+            get
+            {
+                var title = Driver.Instance.FindElement(By.Id("title"));
+                if (title != null)
+                    return title.GetAttribute("value");
+                return string.Empty;
+            }
         }
     }
 

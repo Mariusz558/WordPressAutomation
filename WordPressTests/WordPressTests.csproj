@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="CreatePostTests.cs" />
     <Compile Include="LoginTests.cs" />
+    <Compile Include="PageTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
