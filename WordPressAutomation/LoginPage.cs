@@ -12,7 +12,8 @@ namespace WordPressAutomation
     {
         public static void GoTo()
         {
-            Driver.Instance.Navigate().GoToUrl("http://localhost:15662/wp-login.php");         
+            //Driver.Instance.Navigate().GoToUrl("http://localhost:15662/wp-login.php"); (Ref)
+            Driver.Instance.Navigate().GoToUrl(Driver.BaseAdress + "wp-login.php");
         }
 
         public static LoginCommand LoginAs(string userName)//pierwsza metoda z ciagu metod wywolywanych na klasie LoginPage w tescie; fluent interface za pomoca fabryki; http://stackoverflow.com/questions/515269/factory-pattern-in-c-how-to-ensure-an-object-instance-can-only-be-created-by-a

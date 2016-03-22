@@ -76,7 +76,8 @@ namespace WordPressAutomation
             Driver.Instance.SwitchTo().ActiveElement().SendKeys(body);
             Driver.Instance.SwitchTo().DefaultContent();
 
-            Thread.Sleep(5000);//czeka 1 sec. przed kliknieciem w publish
+            //Thread.Sleep(5000);//czeka 5 sec. przed kliknieciem w publish (Ref)
+            Driver.Wait(TimeSpan.FromSeconds(1));
 
             Driver.Instance.FindElement(By.Name("publish")).Click();
         }

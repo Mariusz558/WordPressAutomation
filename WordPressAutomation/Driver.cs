@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
+using System.Threading;
 
 namespace WordPressAutomation
 {
@@ -19,7 +16,20 @@ namespace WordPressAutomation
 
         public static void Close()
         {
-            //Instance.Close();//zamyka przegladarke po zakonczonym tescie
+            Instance.Close();//zamyka przegladarke po zakonczonym tescie
+        }
+
+        public static string BaseAdress 
+        { 
+            get
+            {
+                return "http://localhost:15662/";
+            }
+        }
+
+        public static void Wait(TimeSpan timeSpan)
+        {
+            Thread.Sleep((int)(timeSpan.TotalSeconds * 5000));
         }
     }
 }
