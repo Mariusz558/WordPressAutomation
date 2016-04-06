@@ -15,11 +15,7 @@ namespace WordPressAutomation
 
         public static void GoTo()//przechodzimy do strony dodawania nowego postu
         {
-            var menuPosts = Driver.Instance.FindElement(By.Id("menu-posts"));//1 krok: klikamy element menu "Posts"
-            menuPosts.Click();//klikamy w niego
-
-            var addNew = Driver.Instance.FindElement(By.LinkText("Add New"));//2. krok: odnajdujemy add new post
-            addNew.Click();//klikamy, aby dodac nowy post
+            LeftNavigation.Posts.AddNew.Select();
         }
 
         public static CreatePostCommand CreatePost(string title)
@@ -51,7 +47,6 @@ namespace WordPressAutomation
             }
         }
     }
-
     public class CreatePostCommand
     {
         private readonly string title;
