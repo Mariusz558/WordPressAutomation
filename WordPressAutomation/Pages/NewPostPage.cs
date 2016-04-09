@@ -18,7 +18,7 @@ namespace WordPressAutomation
             LeftNavigation.Posts.AddNew.Select();
         }
 
-        public static CreatePostCommand CreatePost(string title)
+        public static CreatePostCommand CreatePost(string title)//torzenie nowego posta; przy pomocy fluent interfaces
         {
             return new CreatePostCommand(title);
         }
@@ -57,7 +57,7 @@ namespace WordPressAutomation
             this.title = title;            
         }
 
-        public CreatePostCommand WithBody(string body)
+        public CreatePostCommand WithBody(string body)//dodawanie tresci posta; CreatePost("Post title").WithBody("this is a test body")
         {
             this.body = body;
             return this;
