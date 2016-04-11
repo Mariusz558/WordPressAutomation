@@ -27,6 +27,14 @@ namespace WordPressAutomation
                     //addNew.Click();//klikamy, aby dodac nowy post
                 }
             }
+
+            public class AllPosts
+            {
+                public static void Select()
+                {
+                    MenuSelector.Select("menu-posts", "All Posts");
+                }
+            }
         }
         public class Pages
         {
@@ -35,7 +43,7 @@ namespace WordPressAutomation
                 public static void Select()
                 {
                     //refactoring: dodanie MenuSelector
-                    MenuSelector.Select("menu-posts", "All Pages");
+                    MenuSelector.Select("menu-pages", "All Pages");
 
                     //////kod usuniety po refaktoringu i dodaniu MenuSelectora 
                     ////kod zabrany z metody GoTo() w klasie ListPostPages
