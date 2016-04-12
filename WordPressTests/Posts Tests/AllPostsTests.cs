@@ -11,8 +11,12 @@ namespace WordPressTests.Posts_Tests
     [TestClass]
     public class AllPostsTests : WordpressTests
     {
+        //Added posts show up in all posts
+        //Can trash a post - udalo sia zalatwic przy okazji pierwszego testu
+        //Can search posts
+
         [TestMethod]
-        public static void Added_Posts_Show_Up()
+        public void Added_Posts_Show_Up()
         {
             //Go to posts, get post count, store
             ListPostsPage.GoTo(PostType.Posts);
@@ -31,7 +35,27 @@ namespace WordPressTests.Posts_Tests
 
             //Trash post (clean up)
             ListPostsPage.TrashPost("Added post show up, title");
-            Assert.AreEqual(ListPostsPage PreviousPostCount, ListPostsPage.CurrentPostCount, "Couldn't trash post");//sprawdza czy post dodany w tescie zostal automatycznie usuniety
+            Assert.AreEqual(ListPostsPage.PreviousPostCount, ListPostsPage.CurrentPostCount, "Couldn't trash post");//sprawdza czy post dodany w tescie zostal automatycznie usuniety
+        }
+
+        [TestMethod]
+        public void Can_Search_Posts()
+        {
+            //Create a new post
+            NewPostPage.GoTo();
+            NewPostPage.CreatePost("Searching posts, title").WithBody("Searching posts, body").Publish();
+
+            //Go to list posts
+            ListPostsPage.GoTo(PostType.Posts);
+
+            //Search for the post
+            ListPostsPage.SearchForPost("Searching posts, title");
+
+            //Chect that post shows up in results
+            Assert.IsTrue(ListPostsPage.DoesAPostExistWithTitle("Searching posts, title"));
+
+            //Clean up (Trash post)
+            ListPostsPage.TrashPost("Searching posts, title");
         }
     }
 }

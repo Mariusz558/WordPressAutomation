@@ -47,7 +47,7 @@ namespace WordPressAutomation
             lastCount = GetPostCount();
         }
 
-        private static object GetPostCount()
+        private static int GetPostCount()
         {
             var countText = Driver.Instance.FindElement(By.ClassName("displaying-num")).Text;
             return int.Parse(countText.Split(' ')[0]);
@@ -66,7 +66,7 @@ namespace WordPressAutomation
             foreach (var row in rows)
             {
                 ReadOnlyCollection<IWebElement> links = null;//???
-                links = row.FindElements(By.LinkText(title));
+                Driver.NoWait(() => links = row.FindElements(By.LinkText(title)));//wylaczenie waita na czas wykonywania akcji
 
                 if (links.Count > 0)
                 {
