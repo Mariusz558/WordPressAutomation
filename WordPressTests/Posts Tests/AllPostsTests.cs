@@ -23,18 +23,29 @@ namespace WordPressTests.Posts_Tests
             ListPostsPage.StoreCount();
 
             //Add a new post
-            NewPostPage.GoTo();
-            NewPostPage.CreatePost("Added post show up, title").WithBody("Added post show up, body").Publish();
+            PostCreator.CreatePost();
+
+            //zbedny kod, jesli mamy kreatora postow
+            //NewPostPage.GoTo();
+            //NewPostPage.CreatePost("Added post show up, title").WithBody("Added post show up, body").Publish();
 
             //Go to posts, get the new posts count
             ListPostsPage.GoTo(PostType.Posts);
             Assert.AreEqual(ListPostsPage.PreviousPostCount + 1, ListPostsPage.CurrentPostCount, "Count of posts did not increase");//sprawdza czy nastapil przyrost liczby postow po dodaniu nowego
 
             //Check for added posts
-            Assert.IsTrue(ListPostsPage.DoesAPostExistWithTitle("Added post show up, title"));
+
+            //z kreatorem postow bedzie to wygladalo inaczej
+            //Assert.IsTrue(ListPostsPage.DoesAPostExistWithTitle("Added post show up, title"));
+
+            Assert.IsTrue(ListPostsPage.DoesAPostExistWithTitle(PostCreator.PreviousBody));
+
 
             //Trash post (clean up)
-            ListPostsPage.TrashPost("Added post show up, title");
+            //z kreatorem postow bedzie to wygladalo inaczej
+            //ListPostsPage.TrashPost("Added post show up, title");
+           
+            ListPostsPage.TrashPost(PostCreator.PreviousBody);
             Assert.AreEqual(ListPostsPage.PreviousPostCount, ListPostsPage.CurrentPostCount, "Couldn't trash post");//sprawdza czy post dodany w tescie zostal automatycznie usuniety
         }
 
@@ -49,7 +60,7 @@ namespace WordPressTests.Posts_Tests
             ListPostsPage.GoTo(PostType.Posts);
 
             //Search for the post
-            ListPostsPage.SearchForPost("Searching posts, title");
+            ListPostsPage.SearchForPost("Searching posts, title");//jedyna metoda do zaimplementowania na tym etapie, wszystkie pozostale sa juz zaimplementowane
 
             //Chect that post shows up in results
             Assert.IsTrue(ListPostsPage.DoesAPostExistWithTitle("Searching posts, title"));
