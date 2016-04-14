@@ -38,14 +38,14 @@ namespace WordPressTests.Posts_Tests
             //z kreatorem postow bedzie to wygladalo inaczej
             //Assert.IsTrue(ListPostsPage.DoesAPostExistWithTitle("Added post show up, title"));
 
-            Assert.IsTrue(ListPostsPage.DoesAPostExistWithTitle(PostCreator.PreviousBody));
+            Assert.IsTrue(ListPostsPage.DoesAPostExistWithTitle(PostCreator.PreviousTitle));
 
 
             //Trash post (clean up)
             //z kreatorem postow bedzie to wygladalo inaczej
             //ListPostsPage.TrashPost("Added post show up, title");
            
-            ListPostsPage.TrashPost(PostCreator.PreviousBody);
+            ListPostsPage.TrashPost(PostCreator.PreviousTitle);
             Assert.AreEqual(ListPostsPage.PreviousPostCount, ListPostsPage.CurrentPostCount, "Couldn't trash post");//sprawdza czy post dodany w tescie zostal automatycznie usuniety
         }
 
@@ -53,20 +53,23 @@ namespace WordPressTests.Posts_Tests
         public void Can_Search_Posts()
         {
             //Create a new post
-            NewPostPage.GoTo();
-            NewPostPage.CreatePost("Searching posts, title").WithBody("Searching posts, body").Publish();
+            PostCreator.CreatePost();
+
+            //zbedny kod, jesli mamy kreatora postow
+            //NewPostPage.GoTo();
+            //NewPostPage.CreatePost("Searching posts, title").WithBody("Searching posts, body").Publish();
 
             //Go to list posts
-            ListPostsPage.GoTo(PostType.Posts);
+            //ListPostsPage.GoTo(PostType.Posts);// usuniete przy refaktoringu GoTo();
 
             //Search for the post
             ListPostsPage.SearchForPost("Searching posts, title");//jedyna metoda do zaimplementowania na tym etapie, wszystkie pozostale sa juz zaimplementowane
 
             //Chect that post shows up in results
-            Assert.IsTrue(ListPostsPage.DoesAPostExistWithTitle("Searching posts, title"));
+            Assert.IsTrue(ListPostsPage.DoesAPostExistWithTitle(PostCreator.PreviousTitle));
 
-            //Clean up (Trash post)
-            ListPostsPage.TrashPost("Searching posts, title");
+            ////Clean up (Trash post)//zbedne po wprowadzeniu automatycznego czyszczenia przez klase nadrzedna i metody kreatora postow
+            //ListPostsPage.TrashPost(PostCreator.PreviousTitle);
         }
     }
 }

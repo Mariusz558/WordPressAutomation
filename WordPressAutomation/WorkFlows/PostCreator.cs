@@ -22,5 +22,30 @@ namespace WordPressAutomation
 
         public static string PreviousBody { get; set; }
         public static string PreviousTitle { get; set; }
+
+        public static void Initialize()
+        {
+            PreviousTitle = null;
+            PreviousBody = null;
+        }
+
+        public static void CleanUp()
+        {
+            if (CretedAPost)
+            {
+                TrashPost();
+            }
+        }
+
+        private static void TrashPost()
+        {
+            ListPostsPage.TrashPost(PreviousTitle);
+            Initialize();//aby upewnic sie, ze zmienna PreviousTitle napewno bedzie miala wartosc null
+        }
+
+        protected static bool CreatedAPost
+        {
+            get { return !String.IsNullOrEmpty(PreviousTitle);}
+        }
     }
 }

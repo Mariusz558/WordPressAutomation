@@ -81,6 +81,12 @@ namespace WordPressAutomation
 
         public static void SearchForPost(string searchString)
         {
+            //refactoring GoTo() w testach
+            if (!IsAt)
+            {
+                GoTo(PostType.Posts);
+            }
+
             var searchBox = Driver.Instance.FindElement(By.Id("post-search-input"));
             searchBox.SendKeys(searchString);
 
