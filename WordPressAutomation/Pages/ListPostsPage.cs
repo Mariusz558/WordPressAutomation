@@ -93,6 +93,17 @@ namespace WordPressAutomation
             var searchButton = Driver.Instance.FindElement(By.Id("search-submit"));
             searchButton.Click();
         }
+
+        public static bool IsAt
+        {
+                get //sprawdza czy jestesmy na stronie
+            {
+                var h1s = Driver.Instance.FindElements(By.TagName("h1"));//aby tego dokonac (zwrocic wart. logiczna) wyszukujemy wszystkie elementy o tagu h1 na stronie
+                if (h1s.Count > 0)//jesli mamy ich wiecej niz 0
+                    return h1s[0].Text == "Posts";//zwroc pierwszy, ktorego text jest Dashboard
+                return false;//jesli nie ma h1 zwroc falsz - nie jestesmy na stronie Dashboard
+            }            
+            }
     }
     public enum PostType
     {
